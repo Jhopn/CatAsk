@@ -1,0 +1,52 @@
+body{
+     background-color: rgba(250, 163, 49, 0.795); 
+}
+
+#quadrado{
+    width: 80px;
+    height: 80px;
+    background-color: rgb(31, 8, 239);
+    /* border: 5px solid rgb(40, 200, 40); */
+    position: relative;
+    box-shadow: 1px 3px 10px 2px;
+    transition: 0.7s;
+    animation: float 2s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-30px);
+    }
+}
+.maca{
+    width: 60px;
+    height: 60px;
+    background-color: rgb(72, 53, 236);
+    /* border: 5px solid rgb(40, 200, 40); */
+    position: relative;
+    box-shadow: 1px 3px 7px 2px;
+    transition: 0.7s;
+    animation: float 2s ease-in-out infinite;
+}
+#contagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    color: white;
+    flex-wrap: wrap;
+    
+}
+#valor{
+    text-align: center;
+    font-weight: bold;
+}
+h1{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: white;
+}
