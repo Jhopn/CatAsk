@@ -1,10 +1,13 @@
 body{
      background-color: rgba(250, 163, 49, 0.795); 
+     background-image: url("../imagens/wave-haikei.svg");
+     overflow-x: hidden;
 }
 
 #quadrado{
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
+    border-radius: 25%;
     background-color: rgb(31, 8, 239);
     /* border: 5px solid rgb(40, 200, 40); */
     position: relative;
@@ -12,6 +15,7 @@ body{
     transition: 0.7s;
     animation: float 2s ease-in-out infinite;
 }
+
 @keyframes float {
     0%, 100%{
         transform: translateY(0);
@@ -24,6 +28,7 @@ body{
     width: 60px;
     height: 60px;
     background-color: rgb(72, 53, 236);
+    border-radius: 25%;
     /* border: 5px solid rgb(40, 200, 40); */
     position: relative;
     box-shadow: 1px 3px 7px 2px;
@@ -38,7 +43,6 @@ body{
     font-family:'Times New Roman', Times, serif;
     color: white;
     flex-wrap: wrap;
-    
 }
 #valor{
     text-align: center;
@@ -49,4 +53,7 @@ h1{
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     color: white;
+}
+audio{
+    opacity: 0%;
 }
