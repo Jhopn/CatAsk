@@ -160,109 +160,41 @@ document.addEventListener("keypress", (event)=>{
   }
 });
 
-// if(detectar_mobile){
-//   let setaCima = document.createElement("img");
-//   setaCima.src = "./imagens/caret-up-fill.svg"
-//   setaCima.id = "setaCima"
-//   setasControla.appendChild(setaCima);
-
-//   let seta_Esquerda = document.createElement("img");
-//   seta_Esquerda.src = "./imagens/caret-right-fill.svg"
-//   seta_Esquerda.id = "seta_Esquerda"
-//   setasControla.appendChild(seta_Esquerda);
-
-//   let seta_Direita = document.createElement("img");
-//   seta_Direita.src = "./imagens/caret-left-fill.svg"
-//   seta_Direita.id = "seta_Baixo"
-//   setasControla.appendChild(seta_Direita);
-
-
-//   let seta_Baixo = document.createElement("img");
-//   seta_Baixo.src = "./imagens/caret-down-fill.svg"
-//   seta_Baixo.id = "seta_Baixo"
-//   setasControla.appendChild(seta_Baixo);
-
-
-//   setaCima.addEventListener("click", ()=>{
-//     if( vertical <= 0){
-//       botao.style.top = vertical + "px"
-//     }
-//     else{
-//       vertical = vertical - 50
-//       botao.style.top = vertical + "px"
-//     }
-//     console.log("deu certo")
-//   });
-  
-//   seta_Baixo.addEventListener("click", ()=>{
-//     if( vertical >= (windowHeight - 270)){
-//       botao.style.top = vertical + "px";
-//     } else {
-//       vertical = vertical + 50
-//       botao.style.top = vertical + "px";
-//     }
-//   });
-  
-//   seta_Direita.addEventListener("click", ()=>{
-//     if(horizontal <= 0){
-//       botao.style.top = vertical + "px"
-//     }
-//     else{
-//       horizontal = horizontal - 50
-//       botao.style.left = horizontal + "px";
-//     }
-//   });
-  
-//   seta_Esquerda.addEventListener("click", ()=>{
-//     if(horizontal >= (windowWidth - 130)){
-//       botao.style.left = horizontal + "px"
-  
-//     } else{
-//       horizontal = horizontal + 50
-//       botao.style.left = horizontal + "px"
-  
-//     }
-//   });
-
-//}
-
 function obterCoordenadas(event) {
-  var x = event.clientX || event.touches[0].clientX;
-  var y = event.clientY || event.touches[0].clientY;
+  var x = event.touches[0].clientX;
+  var y = event.touches[0].clientY;
 
-  if(x >= (windowWidth - 130)){
-    botao.style.left = x + "px"
-  } else{
-    botao.style.left = x + "px"
-  }
+  botao.style.top = y  + "px";
+  botao.style.left = x + "px";
 
-  if( y  >= (windowHeight - 270)){
-    botao.style.top = y  + "px";
-  } else {
-      botao.style.top = y  + "px";
-  }
 }
 
 document.addEventListener('touchstart', obterCoordenadas);
 
+document.addEventListener("touchstart", (event)=>{
+  if (estaoSobrepostos(botao, maca)) {
 
+    pontuacao++
+    let valor = document.getElementById("valor");
+    valor.textContent = pontuacao
 
+    // botao.style.width = (80 + pontuacao * 2) +"px";
+    // botao.style.height = (80 + pontuacao * 2) +"px";
 
+    maca.setAttribute("class", "maca");
+    maca.src = "./imagens/images.jpg"
+    div.appendChild(maca)
+    let valorAlt = Math.floor(Math.random() * valoresAlt.length);
+    let valorLarg = Math.floor(Math.random() * valoresLarg.length);
+    maca.style.top = valoresAlt[valorAlt] + "px";
+    maca.style.left = valoresLarg[valorLarg] + "px";
+  } else {
+    console.log('Os elementos não estão sobrepostos.');
+  }
 
+  if( event.key == " "){
+    document.body.style.backgroundColor = "rgba(49, 129, 250, 0.795)";
+    botao.src = "./imagens/gato2.png"
+  }
+});
 
-function detectar_mobile() { 
-  if( navigator.userAgent.match(/Android/i)
-  || navigator.userAgent.match(/webOS/i)
-  || navigator.userAgent.match(/iPhone/i)
-  || navigator.userAgent.match(/iPad/i)
-  || navigator.userAgent.match(/iPod/i)
-  || navigator.userAgent.match(/BlackBerry/i)
-  || navigator.userAgent.match(/Windows Phone/i)
-  ){
-     return true;
-   }
-  else {
-     return false;
-   }
- }
-      
