@@ -1,7 +1,9 @@
 body{
-     background-color: rgba(250, 163, 49, 0.795); 
-     background-image: url("../imagens/wave-haikei.svg");
-     overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(250, 163, 49, 0.795); 
+    background-image: url("../imagens/wave-haikei.svg");
+    overflow-x: hidden;
 }
 
 #quadrado{
@@ -53,6 +55,23 @@ h1{
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     color: white;
+}
+.icon{
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+}
+.icon img{
+    width: 1.9rem;
+}
+.menu{
+    display: none;
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+}
+.aberto{
+    display: block;
 }
 audio{
     opacity: 0%;

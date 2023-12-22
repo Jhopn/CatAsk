@@ -29,8 +29,8 @@ let vertical = 0
 let horizontal = 0
 let pontuacao = 0
 
-var windowWidth = window.innerWidth; // Altura da janela
-var windowHeight = window.innerHeight; // Largura da janela
+var windowWidth = screen.width; // Altura da janela
+var windowHeight = screen.height; // Largura da janela
 
 let valoresAlt = [];
 let valoresLarg = [];
@@ -241,3 +241,21 @@ function AtivarDesativarFS() {
 
 let telaCheia = document.getElementById("telaCheia");
 telaCheia.addEventListener("click", AtivarDesativarFS);
+
+
+
+function configuracoes(){
+  let menu = document.querySelector(".menu");
+  if( menu.classList.contains("aberto")){
+    menu.classList.remove("aberto");
+    imagemConf.src = "./imagens/gear-fill.svg";
+  } else {
+    menu.classList.add("aberto");
+    imagemConf.src = "./imagens/gear.svg";
+  }
+
+
+}
+let opcoes = document.getElementById("configuracoes");
+let imagemConf = document.getElementById("imagemConfiguracoes");
+opcoes.addEventListener("click", configuracoes);
