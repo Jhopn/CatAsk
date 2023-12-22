@@ -160,71 +160,90 @@ document.addEventListener("keypress", (event)=>{
   }
 });
 
-if(detectar_mobile){
-  let setaCima = document.createElement("img");
-  setaCima.src = "./imagens/caret-up-fill.svg"
-  setaCima.id = "setaCima"
-  setasControla.appendChild(setaCima);
+// if(detectar_mobile){
+//   let setaCima = document.createElement("img");
+//   setaCima.src = "./imagens/caret-up-fill.svg"
+//   setaCima.id = "setaCima"
+//   setasControla.appendChild(setaCima);
 
-  let seta_Esquerda = document.createElement("img");
-  seta_Esquerda.src = "./imagens/caret-right-fill.svg"
-  seta_Esquerda.id = "seta_Esquerda"
-  setasControla.appendChild(seta_Esquerda);
+//   let seta_Esquerda = document.createElement("img");
+//   seta_Esquerda.src = "./imagens/caret-right-fill.svg"
+//   seta_Esquerda.id = "seta_Esquerda"
+//   setasControla.appendChild(seta_Esquerda);
 
-  let seta_Direita = document.createElement("img");
-  seta_Direita.src = "./imagens/caret-left-fill.svg"
-  seta_Direita.id = "seta_Baixo"
-  setasControla.appendChild(seta_Direita);
-
-
-  let seta_Baixo = document.createElement("img");
-  seta_Baixo.src = "./imagens/caret-down-fill.svg"
-  seta_Baixo.id = "seta_Baixo"
-  setasControla.appendChild(seta_Baixo);
+//   let seta_Direita = document.createElement("img");
+//   seta_Direita.src = "./imagens/caret-left-fill.svg"
+//   seta_Direita.id = "seta_Baixo"
+//   setasControla.appendChild(seta_Direita);
 
 
-  setaCima.addEventListener("click", ()=>{
-    if( vertical <= 0){
-      botao.style.top = vertical + "px"
-    }
-    else{
-      vertical = vertical - 50
-      botao.style.top = vertical + "px"
-    }
-    console.log("deu certo")
-  });
+//   let seta_Baixo = document.createElement("img");
+//   seta_Baixo.src = "./imagens/caret-down-fill.svg"
+//   seta_Baixo.id = "seta_Baixo"
+//   setasControla.appendChild(seta_Baixo);
+
+
+//   setaCima.addEventListener("click", ()=>{
+//     if( vertical <= 0){
+//       botao.style.top = vertical + "px"
+//     }
+//     else{
+//       vertical = vertical - 50
+//       botao.style.top = vertical + "px"
+//     }
+//     console.log("deu certo")
+//   });
   
-  seta_Baixo.addEventListener("click", ()=>{
-    if( vertical >= (windowHeight - 270)){
-      botao.style.top = vertical + "px";
-    } else {
-      vertical = vertical + 50
-      botao.style.top = vertical + "px";
-    }
-  });
+//   seta_Baixo.addEventListener("click", ()=>{
+//     if( vertical >= (windowHeight - 270)){
+//       botao.style.top = vertical + "px";
+//     } else {
+//       vertical = vertical + 50
+//       botao.style.top = vertical + "px";
+//     }
+//   });
   
-  seta_Direita.addEventListener("click", ()=>{
-    if(horizontal <= 0){
-      botao.style.top = vertical + "px"
-    }
-    else{
-      horizontal = horizontal - 50
-      botao.style.left = horizontal + "px";
-    }
-  });
+//   seta_Direita.addEventListener("click", ()=>{
+//     if(horizontal <= 0){
+//       botao.style.top = vertical + "px"
+//     }
+//     else{
+//       horizontal = horizontal - 50
+//       botao.style.left = horizontal + "px";
+//     }
+//   });
   
-  seta_Esquerda.addEventListener("click", ()=>{
-    if(horizontal >= (windowWidth - 130)){
-      botao.style.left = horizontal + "px"
+//   seta_Esquerda.addEventListener("click", ()=>{
+//     if(horizontal >= (windowWidth - 130)){
+//       botao.style.left = horizontal + "px"
   
-    } else{
-      horizontal = horizontal + 50
-      botao.style.left = horizontal + "px"
+//     } else{
+//       horizontal = horizontal + 50
+//       botao.style.left = horizontal + "px"
   
-    }
-  });
+//     }
+//   });
 
+//}
+
+function obterCoordenadas(event) {
+  var x = event.clientX || event.touches[0].clientX;
+  var y = event.clientY || event.touches[0].clientY;
+
+  if(x >= (windowWidth - 130)){
+    botao.style.left = x + "px"
+  } else{
+    botao.style.left = x + "px"
+  }
+
+  if( y  >= (windowHeight - 270)){
+    botao.style.top = y  + "px";
+  } else {
+      botao.style.top = y  + "px";
+  }
 }
+
+document.addEventListener('touchstart', obterCoordenadas);
 
 
 
