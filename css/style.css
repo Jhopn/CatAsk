@@ -5,8 +5,8 @@ body{
 }
 
 #quadrado{
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     border-radius: 25%;
     background-color: rgb(31, 8, 239);
     /* border: 5px solid rgb(40, 200, 40); */
