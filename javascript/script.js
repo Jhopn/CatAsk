@@ -153,11 +153,6 @@ document.addEventListener("keypress", (event)=>{
   } else {
     console.log('Os elementos não estão sobrepostos.');
   }
-
-  if( event.key == " "){
-    document.body.style.backgroundColor = "rgba(49, 129, 250, 0.795)";
-    botao.src = "./imagens/gato2.png"
-  }
 });
 
 function obterCoordenadas(event) {
@@ -190,11 +185,6 @@ document.addEventListener("touchstart", (event)=>{
     maca.style.left = valoresLarg[valorLarg] + "px";
   } else {
     console.log('Os elementos não estão sobrepostos.');
-  }
-
-  if( event.key == " "){
-    document.body.style.backgroundColor = "rgba(49, 129, 250, 0.795)";
-    botao.src = "./imagens/gato2.png"
   }
 });
 
@@ -259,3 +249,25 @@ function configuracoes(){
 let opcoes = document.getElementById("configuracoes");
 let imagemConf = document.getElementById("imagemConfiguracoes");
 opcoes.addEventListener("click", configuracoes);
+
+
+// Temas
+
+let temas = document.getElementById("temas");
+
+let temaAtivo = false
+function temasCat(){
+  if( temaAtivo === false){
+    document.body.style.backgroundColor = "rgba(49, 129, 250, 0.795)";
+    botao.src = "./imagens/gato2.png"
+    temaAtivo = true
+  }
+  else if(temaAtivo === true){
+    document.body.style.backgroundColor = "rgba(250, 163, 49, 0.795)";
+    botao.src = "./imagens/gato1.png"
+    temaAtivo = false
+  }
+  
+}
+
+temas.addEventListener("click", temasCat, temaAtivo)

@@ -1,9 +1,11 @@
 body{
-    margin: 0px;
-    padding: 0px;
     background-color: rgba(250, 163, 49, 0.795); 
     background-image: url("../imagens/wave-haikei.svg");
     overflow-x: hidden;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #quadrado{
