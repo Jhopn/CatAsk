@@ -39,7 +39,7 @@ for (var i = 0; i < 350 ; i += 50) {
   valoresAlt.push(i);
 }
 
-for (var i = 0; i <= windowHeight - 350 ; i += 50) {
+for (var i = 0; i <= windowHeight - 400 ; i += 50) {
   valoresLarg.push(i);
 }
 console.log(valoresAlt)
