@@ -42,8 +42,8 @@ for (var i = 0; i < 350 ; i += 50) {
 for (var i = 0; i <= windowHeight - 550 ; i += 50) {
   valoresLarg.push(i);
 }
-console.log(valoresAlt)
-console.log(valoresLarg)
+console.log(valoresAlt);
+console.log(valoresLarg);
 
 
 // Cria a primeira ração
@@ -159,7 +159,8 @@ function obterCoordenadas(event) {
   var x = event.touches[0].clientX;
   var y = event.touches[0].clientY;
 
-  botao.style.top = y  + "px";
+
+  botao.style.top = y + "px";
   botao.style.left = x + "px";
 
 }
@@ -178,7 +179,7 @@ document.addEventListener("touchstart", (event)=>{
 
     maca.setAttribute("class", "maca");
     maca.src = "./imagens/images.jpg"
-    div.appendChild(maca)
+    div.appendChild(maca);
     let valorAlt = Math.floor(Math.random() * valoresAlt.length);
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
     maca.style.top = valoresAlt[valorAlt] + "px";
