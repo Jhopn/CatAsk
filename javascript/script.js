@@ -47,7 +47,7 @@ console.log(valoresLarg);
 
 
 // Cria a primeira ração
-maca.setAttribute("class", "maca");
+maca.setAttribute("class", "maca naoSelecionavel");
 maca.src = "./imagens/images.jpg"
 div.appendChild(maca)
 let valorAlt = Math.floor(Math.random() * valoresAlt.length);
@@ -143,7 +143,7 @@ document.addEventListener("keypress", (event)=>{
     // botao.style.width = (80 + pontuacao * 2) +"px";
     // botao.style.height = (80 + pontuacao * 2) +"px";
 
-    maca.setAttribute("class", "maca");
+    maca.setAttribute("class", "maca naoSelecionavel");
     maca.src = "./imagens/images.jpg"
     div.appendChild(maca)
     let valorAlt = Math.floor(Math.random() * valoresAlt.length);
@@ -177,13 +177,14 @@ document.addEventListener("touchstart", (event)=>{
     // botao.style.width = (80 + pontuacao * 2) +"px";
     // botao.style.height = (80 + pontuacao * 2) +"px";
 
-    maca.setAttribute("class", "maca");
+    maca.setAttribute("class", "maca naoSelecionavel");
     maca.src = "./imagens/images.jpg"
     div.appendChild(maca);
     let valorAlt = Math.floor(Math.random() * valoresAlt.length);
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
     maca.style.top = valoresAlt[valorAlt] + "px";
     maca.style.left = valoresLarg[valorLarg] + "px";
+
   } else {
     console.log('Os elementos não estão sobrepostos.');
   }
