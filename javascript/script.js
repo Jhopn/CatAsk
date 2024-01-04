@@ -11,6 +11,8 @@ let vertical = 0
 let horizontal = 0
 let pontuacao = 0
 
+let modalfechado = false
+
 var windowWidth = screen.width; // Altura da janela
 var windowHeight = screen.height; // Largura da janela
 
@@ -38,13 +40,17 @@ maca.style.top = valoresAlt[valorAlt] + "px";
 maca.style.left = valoresLarg[valorLarg] + "px";
 
 document.addEventListener("keypress", (event)=>{
+  if(modalfechado === true ){
     if(event.key == "w" || event.key == "PgUp"){
         if( vertical <= 0){
-            botao.style.top = vertical + "px"
+            botao.style.top = vertical + "px";
         }
         else{
-          vertical = vertical - 50
+          vertical = vertical - 40
           botao.style.top = vertical + "px"
+          botao.style.webkitTransform = 'rotate(180deg)';
+          botao.style.mozTransform = "rotate(180deg)";
+          botao.src = "./imagens/gato.gif"
         }
     }
     else if(event.key == "a" || event.key == "Home"){
@@ -52,16 +58,22 @@ document.addEventListener("keypress", (event)=>{
         botao.style.top = vertical + "px"
       }
       else{
-        horizontal = horizontal - 50
+        horizontal = horizontal - 40
         botao.style.left = horizontal + "px";
+        botao.style.webkitTransform = 'rotate(450deg)';
+        botao.style.mozTransform = "rotate(450deg)";
+        botao.src = "./imagens/gato.gif"
       }
     }
     else if(event.key == "s"){
       if( vertical >= (windowHeight - 270)){
         botao.style.top = vertical + "px";
       } else {
-        vertical = vertical + 50
+        vertical = vertical + 40
         botao.style.top = vertical + "px";
+        botao.style.webkitTransform = 'rotate(360deg)';
+        botao.style.mozTransform = "rotate(360deg)";
+        botao.src = "./imagens/gato.gif"
       }
     }
     else if(event.key == "d"){
@@ -69,11 +81,20 @@ document.addEventListener("keypress", (event)=>{
         botao.style.left = horizontal + "px"
 
       } else{
-        horizontal = horizontal + 50
+        horizontal = horizontal + 40
         botao.style.left = horizontal + "px"
+        botao.style.webkitTransform = 'rotate(270deg)';
+        botao.style.mozTransform = "rotate(270deg)";
+        botao.src = "./imagens/gato.gif"
 
       }
     }
+  } else{
+    alert("Feche as Instruções primeiro!");
+  }
+
+    // botao.style.transform = "2s"
+    // botao.src = "./imagens/gatoparado.png"
 });
 
 
@@ -153,7 +174,16 @@ temas.addEventListener("click", temasCat, temaAtivo)
 let exec
 controlaMusica.addEventListener("click", controlAudio, exec)
 
+// Abre o modal
+document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(function() {
+      openModal();
+  }, 2000); // Abre o modal após 2 segundos (ajuste conforme necessário)
+});
 
+// Fecha o modal inicial
+let modalClose = document.getElementById("close");
+modalClose.addEventListener("click", closeModal);
 
 
 // Funções
@@ -227,9 +257,20 @@ if(isFullScreen === true){
 function moveDiv(event) {
   var x = event.touches[0].clientX;
   var y = event.touches[0].clientY;
+  let angulodoGatoAnterior
 
+  // Define a direção do gato
+  botao.style.transform = "7s";
   botao.style.top = Math.floor(y) + "px";
   botao.style.left = Math.floor(x) + "px";
+
+
+  // Obtem o angulo através de y e x
+  var valorRad = Math.atan2(y, x);
+  var angulodoGato = valorRad * (1080 / Math.PI);
+
+  botao.style.webkitTransform = "rotate("+ angulodoGato + "deg)";
+  botao.style.mozTransform = "rotate("+ angulodoGato + "deg)";
 
 }
 
@@ -281,4 +322,17 @@ function controlAudio(){
     controlaMusica.src = "./imagens/volume-mute-fill.svg"
 
   }
+}
+
+// Abre o modal
+function openModal() {
+  document.getElementById("modalInstrucoes").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
+}
+
+// Fecha o modal
+function closeModal() {
+  document.getElementById("modalInstrucoes").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
+  modalfechado = true
 }

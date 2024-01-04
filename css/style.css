@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(250, 163, 49, 0.795); 
+    background-color: rgba(53, 193, 18, 0.795); 
     background-image: url("../imagens/wave-haikei.svg");
     overflow-x: hidden;
     max-width: 100%;
@@ -9,16 +9,20 @@ body{
 }
 
 #quadrado{
-    width: 120px;
-    height: 120px;
-    border-radius: 25%;
-    background-color: rgb(31, 8, 239);
+    width: 115px;
+    height: 340px;
+    display: block;
+    object-fit: cover;
+     /* 
+    border-radius: 25%; */
+    /* background-color: rgb(31, 8, 239); */
     /* border: 5px solid rgb(40, 200, 40); */
     position: relative;
-    box-shadow: 1px 3px 10px 2px;
+    /* box-shadow: 1px 3px 10px 2px; */
     transition: 0.7s;
-    animation: float 2s ease-in-out infinite;
+    /* animation: float 2s ease-in-out infinite; */
 }
+
 
 @keyframes float {
     0%, 100%{
@@ -86,4 +90,42 @@ audio{
     -ms-user-select: none;        /* IE10+ */
     user-select: none;            /* Possível implementação no futuro */
     /* cursor: default; */
+}
+/* .escuro{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+} */
+#modalInstrucoes{
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    top: 30%;
+    right: 30%;
+    background-color: black;
+    text-align: end;
+    color: white;
+    z-index: 9999;
+    padding: 1rem;
+    box-sizing: border-box;
+    /* box-shadow: 1px 3px 7px 2px; */
+    border-radius: 1%;
+}
+#close{
+    font-size: 35px;
+    padding: 0.3rem;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 5%;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1; 
 }
