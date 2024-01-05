@@ -32,7 +32,7 @@ console.log(valoresLarg);
 
 // Cria a primeira ração
 maca.setAttribute("class", "maca naoSelecionavel");
-maca.src = "./imagens/images.jpg"
+maca.src = "./imagens/Racao.png"
 div.appendChild(maca)
 let valorAlt = Math.floor(Math.random() * valoresAlt.length);
 let valorLarg = Math.floor(Math.random() * valoresLarg.length);
@@ -41,6 +41,7 @@ maca.style.left = valoresLarg[valorLarg] + "px";
 
 document.addEventListener("keypress", (event)=>{
   if(modalfechado === true ){
+    botao.src = "./imagens/Gato.gif"
     if(event.key == "w" || event.key == "PgUp"){
         if( vertical <= 0){
             botao.style.top = vertical + "px";
@@ -48,9 +49,8 @@ document.addEventListener("keypress", (event)=>{
         else{
           vertical = vertical - 40
           botao.style.top = vertical + "px"
-          botao.style.webkitTransform = 'rotate(180deg)';
-          botao.style.mozTransform = "rotate(180deg)";
-          botao.src = "./imagens/gato.gif"
+          botao.style.webkitTransform = 'rotate(360deg)';
+          botao.style.mozTransform = "rotate(360deg)";
         }
     }
     else if(event.key == "a" || event.key == "Home"){
@@ -60,9 +60,8 @@ document.addEventListener("keypress", (event)=>{
       else{
         horizontal = horizontal - 40
         botao.style.left = horizontal + "px";
-        botao.style.webkitTransform = 'rotate(450deg)';
-        botao.style.mozTransform = "rotate(450deg)";
-        botao.src = "./imagens/gato.gif"
+        botao.style.webkitTransform = 'rotate(270deg)';
+        botao.style.mozTransform = "rotate(270deg)";
       }
     }
     else if(event.key == "s"){
@@ -71,9 +70,8 @@ document.addEventListener("keypress", (event)=>{
       } else {
         vertical = vertical + 40
         botao.style.top = vertical + "px";
-        botao.style.webkitTransform = 'rotate(360deg)';
-        botao.style.mozTransform = "rotate(360deg)";
-        botao.src = "./imagens/gato.gif"
+        botao.style.webkitTransform = 'rotate(180deg)';
+        botao.style.mozTransform = "rotate(180deg)";
       }
     }
     else if(event.key == "d"){
@@ -83,20 +81,16 @@ document.addEventListener("keypress", (event)=>{
       } else{
         horizontal = horizontal + 40
         botao.style.left = horizontal + "px"
-        botao.style.webkitTransform = 'rotate(270deg)';
-        botao.style.mozTransform = "rotate(270deg)";
-        botao.src = "./imagens/gato.gif"
-
+        botao.style.webkitTransform = 'rotate(450deg)';
+        botao.style.mozTransform = "rotate(450deg)";
       }
     }
   } else{
     alert("Feche as Instruções primeiro!");
   }
-
     // botao.style.transform = "2s"
     // botao.src = "./imagens/gatoparado.png"
 });
-
 
 
 // Verifica se estão sobre um o outro
@@ -111,7 +105,7 @@ document.addEventListener("keypress", (event)=>{
     // botao.style.height = (80 + pontuacao * 2) +"px";
 
     maca.setAttribute("class", "maca naoSelecionavel");
-    maca.src = "./imagens/images.jpg"
+    maca.src = "./imagens/Racao.png"
     div.appendChild(maca)
     let valorAlt = Math.floor(Math.random() * valoresAlt.length);
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
@@ -178,7 +172,7 @@ controlaMusica.addEventListener("click", controlAudio, exec)
 document.addEventListener("DOMContentLoaded", function() {
   setTimeout(function() {
       openModal();
-  }, 2000); // Abre o modal após 2 segundos (ajuste conforme necessário)
+  }, 1000); // Abre o modal após 2 segundos (ajuste conforme necessário)
 });
 
 // Fecha o modal inicial

@@ -23,7 +23,6 @@ body{
     /* animation: float 2s ease-in-out infinite; */
 }
 
-
 @keyframes float {
     0%, 100%{
         transform: translateY(0);
@@ -33,15 +32,13 @@ body{
     }
 }
 .maca{
-    width: 60px;
-    height: 60px;
-    background-color: rgb(72, 53, 236);
-    border-radius: 25%;
-    /* border: 5px solid rgb(40, 200, 40); */
+    width: 160px;
+    height: 120px;
+    border-radius: 100%; 
     position: relative;
-    box-shadow: 1px 3px 7px 2px;
     transition: 0.7s;
-    animation: float 2s ease-in-out infinite;
+    animation: float 2s ease-in-out infinite; 
+    object-fit: cover;
 }
 #contagem{
     display: flex;
