@@ -256,6 +256,7 @@ function moveDiv(event) {
   if(modalfechado === true && estaoSobrepostos(botao, maca) === false){
       var x = event.touches[0].clientX;
       var y = event.touches[0].clientY;
+      botao.src = "./imagens/Gato (1).gif"
       let angulodoGatoAnterior
 
       // Define a direção do gato
