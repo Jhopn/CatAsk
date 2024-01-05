@@ -41,7 +41,6 @@ maca.style.left = valoresLarg[valorLarg] + "px";
 
 document.addEventListener("keypress", (event)=>{
   if(modalfechado === true ){
-    botao.src = "./imagens/Gato.gif"
     if(event.key == "w" || event.key == "PgUp"){
         if( vertical <= 0){
             botao.style.top = vertical + "px";
@@ -257,7 +256,6 @@ function moveDiv(event) {
   if(modalfechado === true && estaoSobrepostos(botao, maca) === false){
       var x = event.touches[0].clientX;
       var y = event.touches[0].clientY;
-      botao.src = "./imagens/Gato.gif"
       let angulodoGatoAnterior
 
       // Define a direção do gato
