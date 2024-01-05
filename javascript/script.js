@@ -94,9 +94,8 @@ document.addEventListener("keypress", (event)=>{
 
 
 // Verifica se estão sobre um o outro
-document.addEventListener("keypress", (event)=>{
+document.addEventListener("dblclick", (event)=>{
   if (estaoSobrepostos(botao, maca)) {
-
     pontuacao++
     let valor = document.getElementById("valor");
     valor.textContent = pontuacao
@@ -111,19 +110,25 @@ document.addEventListener("keypress", (event)=>{
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
     maca.style.top = valoresAlt[valorAlt] + "px";
     maca.style.left = valoresLarg[valorLarg] + "px";
-  } else {
-    console.log('Os elementos não estão sobrepostos.');
   }
 });
 
 
 // Move a Div atráves do toque na tela
-document.addEventListener('touchstart', moveDiv);
+document.addEventListener("touchstart", moveDiv);
 
+let touchCount = 0
+var touchTimer;
 // Verifica se estão sobre um o outro
 document.addEventListener("touchstart", (event)=>{
-  if (estaoSobrepostos(botao, maca)) {
-
+  touchCount++
+  if(touchCount === 1){
+    touchTimer = setTimeout(function () {
+      touchCount = 0;
+  }, 300); 
+  }
+  else if (touchCount === 2) { 
+    if (estaoSobrepostos(botao, maca)) {
     pontuacao++
     let valor = document.getElementById("valor");
     valor.textContent = pontuacao
@@ -132,16 +137,16 @@ document.addEventListener("touchstart", (event)=>{
     // botao.style.height = (80 + pontuacao * 2) +"px";
 
     maca.setAttribute("class", "maca naoSelecionavel");
-    maca.src = "./imagens/images.jpg"
+    maca.src = "./imagens/Racao.png"
     div.appendChild(maca);
     let valorAlt = Math.floor(Math.random() * valoresAlt.length);
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
     maca.style.top = valoresAlt[valorAlt] + "px";
     maca.style.left = valoresLarg[valorLarg] + "px";
-
-  } else {
-    console.log('Os elementos não estão sobrepostos.');
-  }
+    clearTimeout(touchTimer);
+    touchCount = 0;
+  } 
+}
 });
 
 
@@ -249,23 +254,25 @@ if(isFullScreen === true){
 
 // Move a Div na tela
 function moveDiv(event) {
-  var x = event.touches[0].clientX;
-  var y = event.touches[0].clientY;
-  let angulodoGatoAnterior
+  if(modalfechado === true && estaoSobrepostos(botao, maca) === false){
+      var x = event.touches[0].clientX;
+      var y = event.touches[0].clientY;
+      botao.src = "./imagens/Gato.gif"
+      let angulodoGatoAnterior
 
-  // Define a direção do gato
-  botao.style.transform = "7s";
-  botao.style.top = Math.floor(y) + "px";
-  botao.style.left = Math.floor(x) + "px";
+      // Define a direção do gato
+      botao.style.top = Math.floor(y) + "px";
+      botao.style.left = Math.floor(x) + "px";
 
 
-  // Obtem o angulo através de y e x
-  var valorRad = Math.atan2(y, x);
-  var angulodoGato = valorRad * (1080 / Math.PI);
+      // Obtem o angulo através de y e x
+      var valorRad = Math.atan2(y, x);
+      var angulodoGato = valorRad * (1080 / Math.PI);
 
-  botao.style.webkitTransform = "rotate("+ angulodoGato + "deg)";
-  botao.style.mozTransform = "rotate("+ angulodoGato + "deg)";
+      botao.style.webkitTransform = "rotate("+ angulodoGato + "deg)";
+      botao.style.mozTransform = "rotate("+ angulodoGato + "deg)";
 
+  }
 }
 
 // Verifica se os elementos estão um sobre o outro
@@ -289,7 +296,7 @@ function estaoSobrepostos(player, maca) {
   vertical = parseInt(vertical);
   verticalTwo = parseInt(verticalTwo);
 
-
+  
   let diferencaHorin = horizonTwo - horizon
   let diferencaVer = verticalTwo - vertical
 
@@ -297,9 +304,9 @@ function estaoSobrepostos(player, maca) {
   console.log(diferencaVer)
 
   return (
-    diferencaHorin <= 3  &&
-    diferencaVer <= 3 &&
-    diferencaHorin - diferencaVer <= 3
+    diferencaHorin <= 2  &&
+    diferencaVer <= 2 &&
+    diferencaHorin - diferencaVer <= 0
   );
 }
 
@@ -330,3 +337,19 @@ function closeModal() {
   document.getElementById("overlay").style.display = "none";
   modalfechado = true
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
