@@ -1,6 +1,6 @@
 body{
     background-color: rgba(53, 193, 18, 0.795); 
-    background-image: url("../imagens/wave-haikei.svg");
+    /* background-image: url("../imagens/wave-haikei.svg"); */
     overflow-x: hidden;
     max-width: 100%;
     margin: 0;
@@ -114,10 +114,10 @@ audio{
 
 #modalInstrucoes{
     position: absolute;
-    width: 40%;
-    height: 50%;
+    width: 50%;
+    height: 60%;
     top: 30%;
-    right: 30%;
+    right: 25%;
     background-color: black;
     text-align: end;
     color: white;
@@ -129,17 +129,14 @@ audio{
 }
 
 #close{
-    position: absolute;
-    right: 1.5rem;
-    font-size: 35px;
-    padding: 0.3rem;
+    font-size: 2rem;
+    padding: 0.5%;
     cursor: pointer;
     border: 1px solid white;
     border-radius: 5%;
 }
 .imgControles{
-    width: 50%;
-    height: 70%;
+    width: 45%;
 }
 .overlay {
     display: none;
