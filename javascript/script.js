@@ -7,6 +7,7 @@ let path = document.getElementById("path");
 let setasControla = document.getElementById("setasControla");
 let meioEfeito = document.getElementById("meio");
 
+
 let vertical = 0
 let horizontal = 0
 let pontuacao = 0
@@ -32,7 +33,7 @@ console.log(valoresLarg);
 
 // Cria a primeira ração
 maca.setAttribute("class", "maca naoSelecionavel");
-maca.src = "./imagens/Racao.png"
+maca.src = "./imagens/achocolatado1.png"
 div.appendChild(maca)
 let valorAlt = Math.floor(Math.random() * valoresAlt.length);
 let valorLarg = Math.floor(Math.random() * valoresLarg.length);
@@ -40,7 +41,7 @@ maca.style.top = valoresAlt[valorAlt] + "px";
 maca.style.left = valoresLarg[valorLarg] + "px";
 
 document.addEventListener("keypress", (event)=>{
-  if(modalfechado === true ){
+  if(modalfechado === true){
     if(event.key == "w" || event.key == "PgUp"){
         if( vertical <= 0){
             botao.style.top = vertical + "px";
@@ -124,10 +125,21 @@ document.addEventListener("keypress", (event)=>{
     // botao.style.width = (80 + pontuacao * 2) +"px";
     // botao.style.height = (80 + pontuacao * 2) +"px";
 
-    body.appendChild(pontuacao);
+    setTimeout( () =>{
+      let srcgato = Math.random() *  ["./imagens/imagenspontuacao/1.png", 
+      "./imagens/imagenspontuacao/2.png","./imagens/imagenspontuacao/3.png",
+      "./imagens/imagenspontuacao/4.png","./imagens/imagenspontuacao/5.png",
+      "./imagens/imagenspontuacao/6.png","./imagens/imagenspontuacao/7.png",
+      "./imagens/imagenspontuacao/8.png"];
+      let gatofeliz = document.createElement("img");
+      gatofeliz.src = srcgato
+      div.appendChild(gatofeliz);
+  }, 5000);
+
+    
 
     maca.setAttribute("class", "maca naoSelecionavel");
-    maca.src = "./imagens/Racao.png"
+    maca.src = "./imagens/achocolatado1.png"
     div.appendChild(maca)
     let valorAlt = Math.floor(Math.random() * valoresAlt.length);
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
@@ -152,7 +164,7 @@ document.addEventListener("touchstart", (event)=>{
     // botao.style.height = (80 + pontuacao * 2) +"px";
 
     maca.setAttribute("class", "maca naoSelecionavel");
-    maca.src = "./imagens/Racao.png"
+    maca.src = "./imagens/achocolatado1.png"
     div.appendChild(maca);
     let valorAlt = Math.floor(Math.random() * valoresAlt.length);
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
@@ -324,8 +336,8 @@ function estaoSobrepostos(player, maca) {
   console.log(diferencaVer)
 
   return (
-    diferencaHorin <= 2  &&
-    diferencaVer <= 2 &&
+    diferencaHorin <= 0  &&
+    diferencaVer <= 0 &&
     diferencaHorin - diferencaVer <= 0
   );
 }

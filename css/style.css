@@ -1,17 +1,19 @@
 body{
-    background-color: rgba(53, 193, 18, 0.795); 
-    /* background-image: url("../imagens/wave-haikei.svg"); */
+    background-color: #1caad2; 
     overflow-x: hidden;
     max-width: 100%;
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
 }
-/* .Titulo{
-    
+.Titulo{
+    font-size: 2rem;
+    text-transform: uppercase;
 
-} */
-
+}
+.contagem{
+    font-size: 1rem;
+}
 #quadrado{
     width: 90px;
     height: 120px;
@@ -28,14 +30,7 @@ body{
     z-index: 10;
 }
 
-@keyframes zigzag {
-    0%, 100%{
-        transform: translateX(0);
-    }
-    50%{
-        transform: translateX(-30px);
-    }
-}
+
 
 @keyframes float {
     0%, 100%{
@@ -156,7 +151,7 @@ audio{
     position: absolute;
     margin-top: 0.7rem;
     padding: 1rem;
-    background: #008000;
+    background: #1890b8;
     border-radius: 50%;
     display: block;
     width: 60px;
@@ -186,6 +181,7 @@ audio{
       opacity: 0;
     }
 }
+
 
 /* #quadrado::after{
     content: '';
