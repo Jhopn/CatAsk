@@ -7,6 +7,10 @@ body{
     padding: 20px;
     box-sizing: border-box;
 }
+/* .Titulo{
+    
+
+} */
 
 #quadrado{
     width: 90px;
@@ -21,18 +25,28 @@ body{
     /* box-shadow: 1px 3px 10px 2px; */
     transition: 0.7s;
     /* animation: float 2s ease-in-out infinite; */
+    z-index: 10;
+}
+
+@keyframes zigzag {
+    0%, 100%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translateX(-30px);
+    }
 }
 
 @keyframes float {
     0%, 100%{
-        transform: translateY(0);
+        transform: translateY(30px);
     }
     50%{
         transform: translateY(-30px);
     }
 }
 .maca{
-    width: 160px;
+    width: 90px;
     height: 120px;
     border-radius: 100%; 
     position: relative;
@@ -94,6 +108,10 @@ audio{
     height: 100%;
     background-color: black;
 } */
+.modal-content{
+    text-align: center;
+}
+
 #modalInstrucoes{
     position: absolute;
     width: 40%;
@@ -109,12 +127,19 @@ audio{
     /* box-shadow: 1px 3px 7px 2px; */
     border-radius: 1%;
 }
+
 #close{
+    position: absolute;
+    right: 1.5rem;
     font-size: 35px;
     padding: 0.3rem;
     cursor: pointer;
     border: 1px solid white;
     border-radius: 5%;
+}
+.imgControles{
+    width: 50%;
+    height: 70%;
 }
 .overlay {
     display: none;
@@ -124,5 +149,66 @@ audio{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 1; 
+    z-index: 100; 
 }
+.bordas{
+    position: relative;
+}
+
+.bordas span{
+    position: absolute;
+    margin-top: 0.7rem;
+    padding: 1rem;
+    background: #008000;
+    border-radius: 50%;
+    display: block;
+    width: 60px;
+    height: 60px;
+    transition: 0.8s;
+    animation: animate 2.5s linear infinite;
+    animation-delay: calc(-0.5s * var(--i));
+}
+#meio{
+    animation: none;
+}
+  @keyframes animate {
+    0% {
+      transform: scale(1);
+      padding: 0.2rem;
+      opacity: 0.5;
+    }
+    90% {
+      transform: scale(3);
+      margin-top: -5rem;
+      padding: 0.2rem;
+    }
+    100% {
+      transform: scale(4);
+      margin-top: -5rem;
+      padding: 0.2rem;
+      opacity: 0;
+    }
+}
+
+/* #quadrado::after{
+    content: '';
+    position: absolute;
+    bottom: -233px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 250px;
+    background: linear-gradient(#90EE90, transparent);
+    animation: fogo 0.1s ease infinite;
+}
+  @keyframes fogo {
+    0%, 100% {
+      filter: blur(1px);
+    }
+    25%, 75% {
+      filter: blur(2px);
+    }
+    50% {
+      filter: blur(3px);
+    }
+  } */

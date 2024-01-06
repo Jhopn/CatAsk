@@ -5,7 +5,7 @@ let audio = document.getElementById("musicaFundo");
 let controlaMusica = document.getElementById("controlaMusica");
 let path = document.getElementById("path");
 let setasControla = document.getElementById("setasControla");
-
+let meioEfeito = document.getElementById("meio");
 
 let vertical = 0
 let horizontal = 0
@@ -44,46 +44,68 @@ document.addEventListener("keypress", (event)=>{
     if(event.key == "w" || event.key == "PgUp"){
         if( vertical <= 0){
             botao.style.top = vertical + "px";
+            meioEfeito.style.top = vertical + "px"
         }
         else{
           vertical = vertical - 40
           botao.style.top = vertical + "px"
+          meioEfeito.style.top = vertical + "px"
           botao.style.webkitTransform = 'rotate(360deg)';
           botao.style.mozTransform = "rotate(360deg)";
+
+          meioEfeito.style.webkitTransform = 'rotate(180deg)';
+          meioEfeito.style.mozTransform = "rotate(180deg)";
+
         }
     }
     else if(event.key == "a" || event.key == "Home"){
-      if(horizontal <= 0){
-        botao.style.top = vertical + "px"
+      if(horizontal <= -100){
+        botao.style.left = vertical + "px"
+        meioEfeito.style.left = horizontal + "px"
       }
       else{
         horizontal = horizontal - 40
         botao.style.left = horizontal + "px";
+        meioEfeito.style.left = horizontal + "px"
         botao.style.webkitTransform = 'rotate(270deg)';
         botao.style.mozTransform = "rotate(270deg)";
+
+        meioEfeito.style.webkitTransform = 'rotate(450deg)';
+        meioEfeito.style.mozTransform = "rotate(450deg)";
       }
     }
     else if(event.key == "s"){
       if( vertical >= (windowHeight - 270)){
         botao.style.top = vertical + "px";
+        meioEfeito.style.top = vertical + "px"
       } else {
         vertical = vertical + 40
         botao.style.top = vertical + "px";
+        meioEfeito.style.top = vertical + "px"
+
         botao.style.webkitTransform = 'rotate(180deg)';
         botao.style.mozTransform = "rotate(180deg)";
+
+        meioEfeito.style.webkitTransform = 'rotate(360deg)';
+        meioEfeito.style.mozTransform = "rotate(360deg)";
       }
     }
     else if(event.key == "d"){
       if(horizontal >= (windowWidth - 130)){
         botao.style.left = horizontal + "px"
-
+        meioEfeito.style.left = horizontal + "px"
       } else{
         horizontal = horizontal + 40
         botao.style.left = horizontal + "px"
+        meioEfeito.style.left = horizontal + "px"
         botao.style.webkitTransform = 'rotate(450deg)';
         botao.style.mozTransform = "rotate(450deg)";
+
+        meioEfeito.style.webkitTransform = 'rotate(270deg)';
+        meioEfeito.style.mozTransform = "rotate(270deg)";
       }
     }
+    // meioEfeito.style.animation = "animate 2.5s linear infinite";
   } else{
     alert("Feche as Instruções primeiro!");
   }
@@ -93,7 +115,7 @@ document.addEventListener("keypress", (event)=>{
 
 
 // Verifica se estão sobre um o outro
-document.addEventListener("dblclick", (event)=>{
+document.addEventListener("keypress", (event)=>{
   if (estaoSobrepostos(botao, maca)) {
     pontuacao++
     let valor = document.getElementById("valor");
@@ -101,6 +123,8 @@ document.addEventListener("dblclick", (event)=>{
 
     // botao.style.width = (80 + pontuacao * 2) +"px";
     // botao.style.height = (80 + pontuacao * 2) +"px";
+
+    body.appendChild(pontuacao);
 
     maca.setAttribute("class", "maca naoSelecionavel");
     maca.src = "./imagens/Racao.png"
@@ -116,17 +140,9 @@ document.addEventListener("dblclick", (event)=>{
 // Move a Div atráves do toque na tela
 document.addEventListener("touchstart", moveDiv);
 
-let touchCount = 0
-var touchTimer;
+
 // Verifica se estão sobre um o outro
 document.addEventListener("touchstart", (event)=>{
-  touchCount++
-  if(touchCount === 1){
-    touchTimer = setTimeout(function () {
-      touchCount = 0;
-  }, 300); 
-  }
-  else if (touchCount === 2) { 
     if (estaoSobrepostos(botao, maca)) {
     pontuacao++
     let valor = document.getElementById("valor");
@@ -142,9 +158,6 @@ document.addEventListener("touchstart", (event)=>{
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
     maca.style.top = valoresAlt[valorAlt] + "px";
     maca.style.left = valoresLarg[valorLarg] + "px";
-    clearTimeout(touchTimer);
-    touchCount = 0;
-  } 
 }
 });
 
@@ -253,15 +266,20 @@ if(isFullScreen === true){
 
 // Move a Div na tela
 function moveDiv(event) {
-  if(modalfechado === true && estaoSobrepostos(botao, maca) === false){
-      var x = event.touches[0].clientX;
-      var y = event.touches[0].clientY;
+  if(modalfechado === true){
+      let [touch] = event.touches;
+      var x = touch.clientX;
+      var y = touch.clientY;
       // botao.src = "./imagens/Gato (1).gif"
-      let angulodoGatoAnterior
+
+      botao.style.transition = "1s";
+      meioEfeito.style.transition = "1s";
 
       // Define a direção do gato
-      botao.style.top = Math.floor(y) + "px";
-      botao.style.left = Math.floor(x) + "px";
+      botao.style.top = y + "px";
+      botao.style.left = x + "px";
+      meioEfeito.style.top = y + "px";
+      meioEfeito.style.left = x + "px";
 
 
       // Obtem o angulo através de y e x
@@ -270,6 +288,9 @@ function moveDiv(event) {
 
       botao.style.webkitTransform = "rotate("+ angulodoGato + "deg)";
       botao.style.mozTransform = "rotate("+ angulodoGato + "deg)";
+
+      meioEfeito.style.webkitTransform = "rotate("+ -angulodoGato + "deg)";
+      meioEfeito.style.mozTransform = "rotate("+ -angulodoGato + "deg)";
 
   }
 }

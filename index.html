@@ -18,19 +18,21 @@
     <div id="modalInstrucoes" class="modal">
         <div class="modal-content">
             <span id="close">&times;</span>
-            <p>Seu conteúdo do modal aqui...</p>
+            <p>Utilize as teclas abaixo para alimentar o gato comilão</p>
+            <img class="imgControles" src="./imagens/Controles.svg" alt="">
+            <p>Ou se estiver em um dispositivo de touch arraste seu dedo sobre a tela</p>
         </div>
     </div>
 
     <div class="escuro"></div>
 
-    <h1 id="" class="naoSelecionavel" >Alimente o gato PIDÃO!!!!</h1>
+    <h1 class="Titulo naoSelecionavel" >Alimente o gato PIDÃO!!!!</h1>
     <div id="contagem">
-        <label class="naoSelecionavel" >Pontuação: </label>
+        <label class="Titulo naoSelecionavel" >Pontuação: </label>
         <p id="valor" class="naoSelecionavel"></p>
     </div>
 
-    <div class="icon">
+    <div class="icon naoSelecionavel">
         <button id="configuracoes">
         <img src="./imagens/gear-fill.svg" alt="" id="imagemConfiguracoes">
         </button>
@@ -49,8 +51,18 @@
     </div>
 
     <div id="cobra" class="naoSelecionavel">
+        <div class="bordas naoSelecionavel">
+            <span style="--i:1;" id="meio" >
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+                <span style="--i:4;"></span>
+                <span style="--i:5;"></span>
+            </span>
+        </div>
+        
         <img id="quadrado" src= "./imagens/Gato.gif"></img>
     </div>
+    
 
     
     <!-- <audio id="gatoMiau" controls >
