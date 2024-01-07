@@ -170,38 +170,43 @@ audio{
       opacity: 0.5;
     }
     90% {
-      transform: scale(3);
+      transform: scale(2);
       margin-top: -5rem;
       padding: 0.2rem;
     }
     100% {
-      transform: scale(4);
+      transform: scale(2);
       margin-top: -5rem;
       padding: 0.2rem;
       opacity: 0;
     }
 }
 
-
-/* #quadrado::after{
-    content: '';
-    position: absolute;
-    bottom: -233px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 15px;
-    height: 250px;
-    background: linear-gradient(#90EE90, transparent);
-    animation: fogo 0.1s ease infinite;
+.barraVida{
+    display: flex;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    background-color: #0e5f7a;
+    border-radius: 20px 0px 0px 20px;
+    padding: 0.5rem;
 }
-  @keyframes fogo {
-    0%, 100% {
-      filter: blur(1px);
-    }
-    25%, 75% {
-      filter: blur(2px);
-    }
-    50% {
-      filter: blur(3px);
-    }
-  } */
+.barraVida img{
+    width: 8rem;
+}
+#percentualVida{
+    border: 3px solid wheat;
+    background-color: #1caad2;
+    width: 1rem;
+}
+#comemora{
+    position: relative;
+    text-align: center;
+}
+.pontuacao{
+    width: 8rem;
+}
+.maisUm{
+    color: #0e5f7a;
+    font-size: 40px;
+}

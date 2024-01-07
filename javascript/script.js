@@ -6,7 +6,15 @@ let controlaMusica = document.getElementById("controlaMusica");
 let path = document.getElementById("path");
 let setasControla = document.getElementById("setasControla");
 let meioEfeito = document.getElementById("meio");
+let comemoraDiv = document.getElementById("comemora");
+let vida = document.getElementById("percentualVida");
+let gatoCongelando = document.getElementById("gatoCongelando");
 
+let imagensGato = ["./imagens/imagenspontuacao/1.png", 
+"./imagens/imagenspontuacao/2.png","./imagens/imagenspontuacao/3.png",
+"./imagens/imagenspontuacao/4.png","./imagens/imagenspontuacao/5.png",
+"./imagens/imagenspontuacao/6.png","./imagens/imagenspontuacao/7.png",
+"./imagens/imagenspontuacao/8.png"];
 
 let vertical = 0
 let horizontal = 0
@@ -29,6 +37,29 @@ for (var i = 0; i <= windowHeight - 100 ; i += 50) {
 }
 console.log(valoresAlt);
 console.log(valoresLarg);
+
+let vidaConta = 10
+vida.style.height = vidaConta + "px";
+
+
+var duracaoTotal = 20000;
+var intervalo = 100;
+var incremento = (50 / duracaoTotal) * intervalo;
+
+let intervaloID = setInterval(() => {
+    vidaConta += incremento;
+    vida.style.height = vidaConta + "px";
+
+    if (vidaConta >= 140) {  
+        clearInterval(intervaloID);  
+    }
+    else if(duracaoTotal >= 5000){
+      gatoCongelando.src = "./imagens/gatocongela/gatogelo2.png"
+    }
+    else if(duracaoTotal >= 20000){
+      gatoCongelando.src = "./imagens/gatocongela/gatogelo3.png"
+    }
+}, intervalo);
 
 
 // Cria a primeira ração
@@ -119,22 +150,39 @@ document.addEventListener("keypress", (event)=>{
 document.addEventListener("keypress", (event)=>{
   if (estaoSobrepostos(botao, maca)) {
     pontuacao++
+    vidaConta -= incremento
     let valor = document.getElementById("valor");
     valor.textContent = pontuacao
 
     // botao.style.width = (80 + pontuacao * 2) +"px";
     // botao.style.height = (80 + pontuacao * 2) +"px";
 
+    let indiceAleatorio = Math.floor(Math.random() * imagensGato.length);
+    let srcGato = imagensGato[indiceAleatorio];
+
+    let gatoFeliz = document.createElement("img");
+    gatoFeliz.setAttribute("class", "pontuacao");
+    gatoFeliz.src = srcGato;
+    comemoraDiv.appendChild(gatoFeliz);
+
+    let label = document.createElement("p");
+    let texto = document.createTextNode("+1");
+    label.appendChild(texto)
+    label.setAttribute("class", "maisUm");
+    label.src = srcGato;
+    comemoraDiv.appendChild(label);
+
+
+    let altGato = Math.floor(Math.random() * valoresAlt.length);
+    let largGato = Math.floor(Math.random() * valoresLarg.length);
+    comemoraDiv.style.top = valoresAlt[altGato] + "px";
+    comemoraDiv.style.left = valoresLarg[largGato] + "px";
+
+
     setTimeout( () =>{
-      let srcgato = Math.random() *  ["./imagens/imagenspontuacao/1.png", 
-      "./imagens/imagenspontuacao/2.png","./imagens/imagenspontuacao/3.png",
-      "./imagens/imagenspontuacao/4.png","./imagens/imagenspontuacao/5.png",
-      "./imagens/imagenspontuacao/6.png","./imagens/imagenspontuacao/7.png",
-      "./imagens/imagenspontuacao/8.png"];
-      let gatofeliz = document.createElement("img");
-      gatofeliz.src = srcgato
-      div.appendChild(gatofeliz);
-  }, 5000);
+      comemoraDiv.removeChild(gatoFeliz);
+      comemoraDiv.removeChild(label);
+  }, 1000);
 
     
 
@@ -145,6 +193,7 @@ document.addEventListener("keypress", (event)=>{
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
     maca.style.top = valoresAlt[valorAlt] + "px";
     maca.style.left = valoresLarg[valorLarg] + "px";
+
   }
 });
 
@@ -157,8 +206,30 @@ document.addEventListener("touchstart", moveDiv);
 document.addEventListener("touchstart", (event)=>{
     if (estaoSobrepostos(botao, maca)) {
     pontuacao++
+    vidaConta -= incremento
+
     let valor = document.getElementById("valor");
     valor.textContent = pontuacao
+
+    let indiceAleatorio = Math.floor(Math.random() * imagensGato.length);
+    let srcGato = imagensGato[indiceAleatorio];
+
+    let gatoFeliz = document.createElement("img");
+    gatoFeliz.setAttribute("class", "pontuacao");
+    gatoFeliz.src = srcGato;
+    comemoraDiv.appendChild(gatoFeliz);
+
+    let label = document.createElement("p");
+    let texto = document.createTextNode("+1");
+    label.appendChild(texto)
+    label.setAttribute("class", "maisUm");
+    label.src = srcGato;
+    comemoraDiv.appendChild(label);
+
+    setTimeout( () =>{
+      comemoraDiv.removeChild(gatoFeliz);
+      comemoraDiv.removeChild(label);
+  }, 1000);
 
     // botao.style.width = (80 + pontuacao * 2) +"px";
     // botao.style.height = (80 + pontuacao * 2) +"px";
@@ -170,6 +241,11 @@ document.addEventListener("touchstart", (event)=>{
     let valorLarg = Math.floor(Math.random() * valoresLarg.length);
     maca.style.top = valoresAlt[valorAlt] + "px";
     maca.style.left = valoresLarg[valorLarg] + "px";
+
+    let altGato = Math.floor(Math.random() * valoresAlt.length);
+    let largGato = Math.floor(Math.random() * valoresLarg.length);
+    comemoraDiv.style.top = valoresAlt[altGato] + "px";
+    comemoraDiv.style.left = valoresLarg[largGato] + "px";
 }
 });
 
