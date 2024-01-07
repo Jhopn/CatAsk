@@ -46,7 +46,8 @@ var duracaoTotal = 20000;
 var intervalo = 100;
 var incremento = (50 / duracaoTotal) * intervalo;
 
-let intervaloID = setInterval(() => {
+if(modalfechado === true){
+  let intervaloID = setInterval(() => {
     vidaConta += incremento;
     vida.style.height = vidaConta + "px";
 
@@ -60,6 +61,9 @@ let intervaloID = setInterval(() => {
       gatoCongelando.src = "./imagens/gatocongela/gatogelo3.png"
     }
 }, intervalo);
+
+}
+
 
 
 // Cria a primeira ração
